@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    kele (0.0.1)
+      httparty (~> 0.13)
+
+GEM
+  specs:
+    httparty (0.14.0)
+      multi_xml (>= 0.5.2)
+    multi_xml (0.6.0)
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  kele!
+
+BUNDLED WITH
+   1.14.6
