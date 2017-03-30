@@ -1,5 +1,7 @@
 Bundler.require(:default, :development)
-include HTTParty
+require_relative './roadmap'
+require_relative './kele'
+include HTTParty, Json, Roadmap
 
 class Kele
   def initialize(email, password)
