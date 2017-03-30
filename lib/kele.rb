@@ -1,8 +1,7 @@
-
-class Kele
-
+Bundler.require(:default, :development)
 include HTTParty
 
+class Kele
   def initialize(email, password)
     @email = email
     @password = password
@@ -13,6 +12,10 @@ include HTTParty
     if @auth_token.nil? || response.nil?
       raise Error, "Unable to access user. Please try again with valid user information."
     end
+  end
 
+  def get_me
+  response = self.class.get('https://www.bloc.io/api/v1/users/me', headers: { "authorization": @auth_token })
+  JSON.parse(response.body)
   end
 end
