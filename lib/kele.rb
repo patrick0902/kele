@@ -25,7 +25,7 @@ class Kele
   response = self.class.get("https://www.bloc.io/api/v1/mentors/#{mentor_id}/student_availability", headers: { "authorization": @auth_token })
   JSON.parse(response.body)
   end
-  
+
   def get_messages(page = nil) # optional method parameter
     if page != nil # return specified page
       response = self.class.get("https://www.bloc.io/api/v1/message_threads", headers: { "authorization": @auth_token }, body: { "page": page })
@@ -42,6 +42,17 @@ class Kele
         "recipient_id": recipient_id,
         "subject": subject,
         "stripped-text": stripped_text
+      })
+  end
+
+  def create_submission(checkpoint_id, assignment_branch, assignment_commit_link, comment, enrollment_id)
+  response = self.class.post("https://www.bloc.io/api/v1/checkpoint_submissions", headers: { "authorization": @auth_token },
+    body: {
+      "checkpoint_id": checkpoint_id,
+      "assignment_branch": assignment_branch,
+      "assignment_commit_link": assignment_commit_link,
+      "comment": comment,
+      "enrollment_id": enrollment_id
       })
   end
 end
